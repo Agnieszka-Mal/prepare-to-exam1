@@ -1,0 +1,27 @@
+<form action='/calculator' method='POST'>
+    <label>
+        First number
+        <input type="text"
+               name="first_num">
+    </label>
+    <label>
+        Second number
+        <input type="text"
+               name="second_num">
+    </label>
+    <label>
+        <fieldset>
+            <legend>Type of math operation</legend>
+            <label> <input type="radio" name="operation" value="+"/> dodawanie </label>
+            <label> <input type="radio" name="operation" value="-"/> odejmowanie </label>
+            <label> <input type="radio" name="operation" value="*"/> mnożenie </label>
+            <label> <input type="radio" name="operation" value=":"/>dzielenie </label>
+        </fieldset>
+    </label>
+    <label>
+        <button type='submit'>
+            Wyślij
+        </button>
+    </label>
+</form>
+{{msg}}
