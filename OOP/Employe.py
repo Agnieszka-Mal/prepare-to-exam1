@@ -6,7 +6,11 @@ class Employee:
         self.second_name = second_name
         self._salary = 0
 
+    @property
+    def set_salary(self):
+        return self._salary
 
+    @set_salary.setter
     def set_salary(self, salary):
         if isinstance(salary, int) and salary > 0.0 and isinstance(salary, int) and salary > 0.0:
             self._salary = salary
@@ -19,7 +23,9 @@ class Employee:
 
 
 m = Employee(1, "Aga", "kowalska")
-m.set_salary(4500)
+m.set_salary = 10
+m.set_salary = 20
 print(m._salary)
+
 
 
