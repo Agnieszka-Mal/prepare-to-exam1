@@ -1,9 +1,10 @@
 from psycopg2 import connect, OperationalError
-from psycopg2.errors import DuplicateDatabase
+from psycopg2.errors import DuplicateTable
 
 USER = "postgres"
 HOST = "127.0.0.1"
 PASSWORD = "coderslab"
+DB = "exam2"
 
 CREATE_TABLE_USER = " CREATE TABLE Users(" \
                     "id serial not null PRIMARY KEY," \
@@ -33,13 +34,13 @@ CREATE_TABLE_ITEMSORDERS = "CREATE TABLE ItemsOrders(" \
                            "order_id serial REFERENCES Orders(id) ON DELETE CASCADE);"
 
 try:
-    cnx = connect(database="exam2", user=USER, password=PASSWORD, host=HOST)
+    cnx = connect(database=DB, user=USER, password=PASSWORD, host=HOST)
     cnx.autocommit = True
     cursor = cnx.cursor()
     try:
         cursor.execute(CREATE_TABLE_MESSAGES)
         print("Table Items created")
-    except DuplicateDatabase as e:
+    except DuplicateTable as e:
         print("Table Items exist", e)
     cnx.close()
     cursor.close()

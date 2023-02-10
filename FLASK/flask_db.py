@@ -2,7 +2,7 @@
 
 
 from flask import Flask, request, render_template
-from psycopg2 import connect
+from psycopg2 import connect, OperationalError
 
 USER = "postgres"
 HOST = "localhost"
@@ -14,15 +14,11 @@ def execute_sql(sql_code, db):
         cnx.autocommit = True
         cursor = cnx.cursor()
         cursor.execute(sql_code)
-        results = None
-        if cursor.rowcount > 0:
-            results = cursor.fetchall()
         cursor.close()
         cnx.close()
-        return results
-    except:
+    except Exception as ex:
         print("There is error in execute_sql")
-
+        print(ex)
 
 app = Flask(__name__)
 
